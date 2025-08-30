@@ -1,31 +1,31 @@
-if loadstring(game:HttpGet "https://pastebin.com/raw/SKQ4yd4e")() ~= 'This is the Hasl script UI to prevent theft' then
-    while wait() do
-        print('你个傻逼还想盗用Hasl的UI')
-    end
-end
-repeat
-    wait()
-until game:IsLoaded()
-local Forums = {}
-local Theme = {
-    RedTheme = {
-        MainColor = Color3.fromRGB(36, 36, 36),
-        MainHeaderColor = Color3.fromRGB(141, 56, 56),
-        MainHeaderColorImage = Color3.fromRGB(130, 51, 51),
-        TainerHdlderColor = Color3.fromRGB(36, 36, 36),
-        NewPageColor = Color3.fromRGB(193, 76, 76),
-        SectionMainColor = Color3.fromRGB(32, 32, 32),
-        Color = Color3.fromRGB(141, 56, 56),
-        Image = Color3.fromRGB(130, 51, 51),
-        MouseEnterColor = Color3.fromRGB(121, 48, 48),
-        TextBoxColor = Color3.fromRGB(109, 43, 43),
-        FontColor = Color3.fromRGB(255, 101, 101),
-        SliderButtonColor = Color3.fromRGB(141, 56, 56),
-        SliderColor = Color3.fromRGB(109, 43, 43),
-        DropOpenColor = Color3.fromRGB(141, 56, 56),
-        DropImageColor = Color3.fromRGB(235, 93, 93),
-        DropFrameColor = Color3.fromRGB(84, 33, 33),
-        SampleColor = Color3.fromRGB(36, 36, 36),
+如果loadstring(game:http get " https://pastebin . com/raw/skq 4 yd 4 e ")()~ = '这是防窃的Hasl脚本UI '那么
+while wait() do
+打印('你个傻逼还想盗用Hasl的UI’)
+结束
+结束
+重复
+等待()
+直到游戏:已加载()
+本地论坛= {}
+本地主题= {
+RedTheme = {
+MainColor = Color3.fromRGB(36，36，36)，
+MainHeaderColor = color 3 . from RGB(141，56，56)，
+MainHeaderColorImage = color 3 . from RGB(130，51，51)，
+TainerHdlderColor = color 3 . from RGB(36，36，36)，
+new pagecolor = color 3 . from RGB(193，76，76)，
+section main color = color 3 . from RGB(32，32，32)，
+Color = Color3.fromRGB(141，56，56)，
+Image = Color3.fromRGB(130，51，51)，
+mouse enter color = color 3 . from RGB(121，48，48)，
+textbox color = color 3 . from RGB(109，43，43)，
+FontColor = Color3.fromRGB(255，101，101)，
+SliderButtonColor = color 3 . from RGB(141，56，56)，
+SliderColor = Color3.fromRGB(109，43，43)，
+DropOpenColor = color 3 . from RGB(141，56，56)，
+drop image color = color 3 . from RGB(235，93，93)，
+drop frame color = color 3 . from RGB(84，33，33)，
+SampleColor = Color3.fromRGB(36，36，36)，
         SeperatorColor = Color3.fromRGB(141, 56, 56)
     },
     DarkTheme = {
