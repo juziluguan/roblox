@@ -1,31 +1,31 @@
--- Gui to Lua
--- Version: 3.2
+- Gui到Lua
+-版本:3.2
 
--- Instances:
+-实例:
 
-local BeiFengFlyV3 = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local TopBar = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Close = Instance.new("ImageButton")
-local Minimize = Instance.new("ImageButton")
-local Content = Instance.new("Frame")
-local Up = Instance.new("TextButton")
-local Down = Instance.new("TextButton")
-local Plus = Instance.new("TextButton")
-local Mine = Instance.new("TextButton")
-local Speed = Instance.new("TextLabel")
-local Fly = Instance.new("TextButton")
+local BeiFengFlyV3 = instance . new(" screen GUI ")
+local Main = Instance.new("Frame ")
+local top bar = instance . new(" Frame ")
+local Title = instance . new(" text label ")
+local Close = instance . new(" ImageButton ")
+local Minimize = instance . new(" ImageButton ")
+本地内容= Instance.new("Frame ")
+local Up = instance . new(" text button ")
+local Down = instance . new(" text button ")
+local Plus = instance . new(" text button ")
+local Mine = instance . new(" text button ")
+本地速度= Instance.new("TextLabel ")
+local Fly = instance . new(" text button ")
 
---Properties:
+-属性:
 
-BeiFengFlyV3.Name = "BeiFengFlyV3"
-BeiFengFlyV3.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-BeiFengFlyV3.ResetOnSpawn = false
+北风FlyV3。Name = "BeiFengFlyV3 "
+北风FlyV3。家长=游戏。players . local player:WaitForChild(" player GUI ")
+北风FlyV3。ResetOnSpawn = false
 
-Main.Name = "Main"
-Main.Parent = BeiFengFlyV3
-Main.AnchorPoint = Vector2.new(0, 0.5)
+主要的。Name = "Main "
+主要的。Parent = BeiFengFlyV3
+主要的。AnchorPoint = Vector2.new(0，0.5)
 Main.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
 Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Main.BorderSizePixel = 0
