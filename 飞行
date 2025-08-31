@@ -1,0 +1,224 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local BeiFengFlyV3 = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TopBar = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Close = Instance.new("ImageButton")
+local Minimize = Instance.new("ImageButton")
+local Content = Instance.new("Frame")
+local Up = Instance.new("TextButton")
+local Down = Instance.new("TextButton")
+local Plus = Instance.new("TextButton")
+local Mine = Instance.new("TextButton")
+local Speed = Instance.new("TextLabel")
+local Fly = Instance.new("TextButton")
+
+--Properties:
+
+BeiFengFlyV3.Name = "BeiFengFlyV3"
+BeiFengFlyV3.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BeiFengFlyV3.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = BeiFengFlyV3
+Main.AnchorPoint = Vector2.new(0, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.BackgroundTransparency = 1.000
+Main.Position = UDim2.new(0.100000001, 0, 0.449999988, 0)
+Main.Size = UDim2.new(0, 190, 0, 130)
+
+TopBar.Name = "TopBar"
+TopBar.Parent = Main
+TopBar.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+TopBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TopBar.BorderSizePixel = 1
+TopBar.Size = UDim2.new(1, 0, 0, 30)
+
+Title.Name = "Title"
+Title.Parent = TopBar
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 115, 0, 30)
+Title.Font = Enum.Font.Ubuntu
+Title.Text = "橙子-飞行V3"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 17.000
+
+Close.Name = "Close"
+Close.Parent = TopBar
+Close.AnchorPoint = Vector2.new(1, 0)
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.968421042, 0, 0.233333334, 0)
+Close.Size = UDim2.new(0, 15, 0, 15)
+Close.Image = "rbxassetid://7072725342"
+
+Minimize.Name = "Minimize"
+Minimize.Parent = TopBar
+Minimize.AnchorPoint = Vector2.new(1, 0)
+Minimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Minimize.BackgroundTransparency = 1.000
+Minimize.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Minimize.BorderSizePixel = 0
+Minimize.Position = UDim2.new(0.857894719, 0, 0.233333334, 0)
+Minimize.Size = UDim2.new(0, 15, 0, 15)
+Minimize.Image = "rbxassetid://7072719338"
+
+Content.Name = "Content"
+Content.Parent = Main
+Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Content.BackgroundTransparency = 1.000
+Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Content.BorderSizePixel = 0
+Content.Position = UDim2.new(0, 0, 0.230769232, 0)
+Content.Size = UDim2.new(1, 0, 1, -30)
+
+Up.Name = "Up"
+Up.Parent = Content
+Up.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Up.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Up.BorderSizePixel = 1
+Up.Size = UDim2.new(0, 50, 0, 50)
+Up.Font = Enum.Font.Ubuntu
+Up.Text = "上升"
+Up.TextColor3 = Color3.fromRGB(255, 255, 255)
+Up.TextSize = 18.000
+
+Down.Name = "Down"
+Down.Parent = Content
+Down.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Down.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Down.BorderSizePixel = 1
+Down.Position = UDim2.new(0, 0, 0.5, 0)
+Down.Size = UDim2.new(0, 50, 0, 50)
+Down.Font = Enum.Font.Ubuntu
+Down.Text = "下降"
+Down.TextColor3 = Color3.fromRGB(255, 255, 255)
+Down.TextSize = 18.000
+
+Plus.Name = "Plus"
+Plus.Parent = Content
+Plus.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Plus.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Plus.BorderSizePixel = 1
+Plus.Position = UDim2.new(0.263157904, 0, 0, 0)
+Plus.Size = UDim2.new(0, 50, 0, 50)
+Plus.Font = Enum.Font.Ubuntu
+Plus.Text = "+"
+Plus.TextColor3 = Color3.fromRGB(255, 255, 255)
+Plus.TextSize = 20.000
+
+Mine.Name = "Mine"
+Mine.Parent = Content
+Mine.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Mine.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Mine.BorderSizePixel = 1
+Mine.Position = UDim2.new(0.263157904, 0, 0.5, 0)
+Mine.Size = UDim2.new(0, 50, 0, 50)
+Mine.Font = Enum.Font.Ubuntu
+Mine.Text = "-"
+Mine.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mine.TextSize = 28.000
+
+Speed.Name = "Speed"
+Speed.Parent = Content
+Speed.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+Speed.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Speed.BorderSizePixel = 1
+Speed.Position = UDim2.new(0.526315808, 0, 0, 0)
+Speed.Size = UDim2.new(0, 90, 0, 50)
+Speed.Font = Enum.Font.Cartoon
+Speed.Text = "1"
+Speed.TextColor3 = Color3.fromRGB(255, 255, 255)
+Speed.TextSize = 24.000
+
+Fly.Name = "Fly"
+Fly.Parent = Content
+Fly.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+Fly.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Fly.BorderSizePixel = 1
+Fly.Position = UDim2.new(0.526315808, 0, 0.5, 0)
+Fly.Size = UDim2.new(0, 90, 0, 50)
+Fly.Font = Enum.Font.Ubuntu
+Fly.Text = "飞"
+Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fly.TextSize = 20.000
+
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Main.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = Main.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+Main.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+local Mini = false
+
+最小化。MouseButton1Click:Connect(函数()
+迷你=非迷你
+如果不是迷你，那么
+最小化。Image = "rbxassetid://7072720870 "
+其他
+最小化。Image = "rbxassetid://7072719338 "
+结束
+内容。可见=迷你
+结束)
+
+关闭。MouseButton1Click:Connect(函数()
+BeiFengFlyV3:Destroy()
+结束)
+
+nowe = false
+speeds = 1
+local speaker = game:GetService(“玩家”)。本地播放器
+
+飞吧。MouseButton1Down:connect(函数()
+	if nowe == true then		nowe = false
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Climbing，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.FallingDown，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType .飞天，真)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Freefall，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.GettingUp，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Jumping，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Landed，true)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType .物理学，真)
+扬声器。性格，人性
