@@ -1,0 +1,167 @@
+local LBLG = Instance.new("ScreenGui")
+local LBL = Instance.new("TextLabel")
+local player = game.Players.LocalPlayer
+
+-- 修复：确保GUI正确放置
+LBLG.Name = "LBLG"
+LBLG.Parent = game:GetService("CoreGui")  -- 使用GetService更安全
+LBLG.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+LBLG.Enabled = true
+
+LBL.Name = "LBL"
+LBL.Parent = LBLG
+LBL.BackgroundColor3 = Color3.new(1, 1, 1)
+LBL.BackgroundTransparency = 1
+LBL.BorderColor3 = Color3.new(0, 0, 0)
+LBL.Position = UDim2.new(0.75, 0, 0.010, 0)
+LBL.Size = UDim2.new(0, 200, 0, 30)
+LBL.Font = Enum.Font.GothamSemibold
+LBL.Text = "加载中..."
+LBL.TextColor3 = Color3.new(1, 1, 1)
+LBL.TextScaled = false
+LBL.TextSize = 16
+LBL.TextWrapped = true
+LBL.Visible = true
+
+local FpsLabel = LBL
+local Heartbeat = game:GetService("RunService").Heartbeat
+local LastIteration, Start
+local FrameUpdateTable = {}
+
+local function HeartbeatUpdate()
+    LastIteration = tick()
+    for Index = #FrameUpdateTable, 1, -1 do
+        FrameUpdateTable[Index + 1] = (FrameUpdateTable[Index] >= LastIteration - 1) and FrameUpdateTable[Index] or nil
+    end
+    FrameUpdateTable[1] = LastIteration
+    local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
+    CurrentFPS = math.floor(CurrentFPS)
+    
+    local hour = os.date("%H")
+    local minute = os.date("%M")
+    local second = os.date("%S")
+    
+    FpsLabel.Text = ("你好啊: "..hour.."时"..minute.."分"..second.."秒 | FPS: "..CurrentFPS)
+end
+
+Start = tick()
+Heartbeat:Connect(HeartbeatUpdate)
+
+-- 先测试基础UI是否显示
+game:GetService("StarterGui"):SetCore("SendNotification",{ 
+    Title = "『910』", 
+    Text ="正在加载UI界面...", 
+    Duration = 3, 
+})
+
+-- 先不加载外部UI库，测试基础功能
+wait(1)
+
+-- 创建简单的测试UI来确认问题
+local testFrame = Instance.new("Frame")
+testFrame.Name = "TestFrame"
+testFrame.Parent = LBLG
+testFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+testFrame.BorderSizePixel = 0
+testFrame.Position = UDim2.new(0.7, 0, 0.05, 0)
+testFrame.Size = UDim2.new(0, 250, 0, 200)
+testFrame.Visible = true
+
+local testLabel = Instance.new("TextLabel")
+testLabel.Name = "TestLabel"
+testLabel.Parent = testFrame
+testLabel.BackgroundTransparency = 1
+testLabel.Size = UDim2.new(1, 0, 1, 0)
+testLabel.Text = "测试UI - 如果能看见这个，说明基础UI正常"
+testLabel.TextColor3 = Color3.new(1, 1, 1)
+testLabel.TextSize = 14
+testLabel.TextWrapped = true
+
+-- 检查UI库链接是否有效
+game:GetService("StarterGui"):SetCore("SendNotification",{ 
+    Title = "『910』", 
+    Text ="正在检查UI库链接...", 
+    Duration = 2, 
+})
+
+-- 尝试加载UI库
+local success, ui = pcall(function()
+    local response = game:HttpGet("https://raw.githubusercontent.com/THDZEP/Blue-blue-blue/refs/heads/main/hbvc", true)
+    if response and #response > 0 then
+        return loadstring(response)()
+    else
+        error("UI库内容为空")
+    end
+end)
+
+if success and ui then
+    game:GetService("StarterGui"):SetCore("SendNotification",{ 
+        Title = "『910』", 
+        Text ="UI库加载成功，正在创建界面...", 
+        Duration = 3, 
+    })
+    
+    -- 隐藏测试UI
+    testFrame.Visible = false
+    
+    local win = ui:new("910")
+    
+    local UITab1 = win:Tab("『信息』", false)
+    
+    local about = UITab1:section("『作者信息』", false)
+    about:Label("910")
+    about:Label("缝合脚本")
+    about:Label("QQ主群：没有 QQ副群 没有")
+    about:Label("无法执行Bug已经修复")
+    about:Label("脚本不会更新了")
+    about:Label("脚本优化也不会")
+    
+    local about = UITab1:section("『玩家信息』", false)
+    about:Label("你的账号年龄:"..player.AccountAge.."天")
+    
+    local executor = "未知"
+    if type(identifyexecutor) == "function" then
+        executor = identifyexecutor()
+    end
+    about:Label("你的注入器:"..executor)
+    about:Label("你的用户名:"..player.Name)
+    
+    local gameName = "未知"
+本地gameId = "未知"
+pcall(函数()
+gameName = game:get service(" MarketplaceService "):获取产品信息(game .PlaceId).名字
+gameId = tostring(游戏。GameId)
+结束)
+    
+    about:Label("你现在的服务器名称:"..gameName)
+关于:标签("你现在的服务器id:"..gameId)
+关于:标签("你的用户ID:"..玩家。UserId)
+    
+本地clientId = "未知"
+pcall(函数()
+clientId = game:get service(" RbxAnalyticsService "):get clientId()
+结束)
+关于:标签("获取客户端ID:"..clientId)
+    
+local ui Tab 2 = win:Tab("と公告』", '7734068321')
+local about = ui tab 2:section("と公告ど”，真)
+关于:标签("感谢所有支持910的人")
+关于:标签(" bug有点多见谅")
+关于:标签("糖酥")
+关于:标签("我操你大臂!")
+关于:标签("感谢大家支持910")
+关于:标签("十分感谢")
+       
+    -- 添加通用选项卡
+local ui Tab 3 = win:Tab("と通用ど”，假的)
+local general = ui tab 3:section("と通用功能ど”，真)
+常规:按钮("飞行功能“，函数()
+loadstring(" 108 111 97 100 115 116 114 105 110 103 40 103 97 109 101 58 72 116 116 112 71 101 116 40 40 39 104 116 116 112 115 58 47 47 103 105 115 116 46 103 105 116 104 117 98 1111 102 48 97 55 48 48 49 55 51 48 48 100 100 100 54 55 102 100 99 100 51 55 48 47 114 97 119 47 101 49 52 101 55 52 102 52 50 53 98 48 54 48 100 102 53 50 51 51 52 51 99 102 51 48 98 55 56 55 48 55 52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+    end)
+其他
+game:get service(" starter GUI "):set core(" send notification " ,{
+title = "と错误』",
+Text ="UI库加载失败,使用备用界面",
+        Duration = 5, 
+    })
+结束
