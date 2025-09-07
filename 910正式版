@@ -1,31 +1,31 @@
-local LBLG = Instance.new("ScreenGui")
-local LBL = Instance.new("TextLabel")
-local player = game.Players.LocalPlayer
+local LBLG = instance . new(" screen GUI ")
+本地LBL = Instance.new("TextLabel ")
+本地玩家=游戏。玩家。本地玩家
 
--- 修复：确保GUI正确放置
-LBLG.Name = "LBLG"
-LBLG.Parent = game:GetService("CoreGui")  -- 使用GetService更安全
-LBLG.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-LBLG.Enabled = true
+-修复：确保几内亚正确放置
+LBLG。Name = "LBLG "
+LBLG。parent = game:GetService(" CoreGui ")--使用获取服务更安全
+LBLG。ZIndexBehavior = Enum。ZIndexBehavior .同胞
+LBLG。启用=真
 
-LBL.Name = "LBL"
-LBL.Parent = LBLG
-LBL.BackgroundColor3 = Color3.new(1, 1, 1)
-LBL.BackgroundTransparency = 1
-LBL.BorderColor3 = Color3.new(0, 0, 0)
-LBL.Position = UDim2.new(0.75, 0, 0.010, 0)
-LBL.Size = UDim2.new(0, 200, 0, 30)
-LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "加载中..."
-LBL.TextColor3 = Color3.new(1, 1, 1)
-LBL.TextScaled = false
-LBL.TextSize = 16
-LBL.TextWrapped = true
-LBL.Visible = true
+LBL。Name = "LBL "
+LBL。Parent = LBLG
+LBL。BackgroundColor3 = Color3.new(1，1，1)
+LBL。BackgroundTransparency = 1
+LBL。BorderColor3 = Color3.new(0，0，0)
+LBL。Position = UDim2.new(0.75，0，0.010，0)
+LBL。Size = UDim2.new(0，200，0，30)
+LBL。Font = Enum。字体. GothamSemibold
+LBL。Text = "加载中..."
+LBL。TextColor3 = Color3.new(1，1，1)
+LBL。TextScaled = false
+LBL。TextSize = 16
+LBL。TextWrapped = true
+LBL。可见=真
 
-local FpsLabel = LBL
-local Heartbeat = game:GetService("RunService").Heartbeat
-local LastIteration, Start
+本地FpsLabel = LBL
+本地心跳= game:get service(“run service”)。心跳
+本地最后一次迭代，开始
 local FrameUpdateTable = {}
 
 local function HeartbeatUpdate()
