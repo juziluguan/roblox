@@ -1,79 +1,79 @@
-local LBLG = instance . new(" screen GUI ")
-本地LBL = Instance.new("TextLabel ")
+本地LBLG =实例。新建(“屏幕GUI”)
+本地LBL = Instance.new("文本标签")
 本地玩家=游戏。玩家。本地玩家
 
 -修复：确保几内亚正确放置
-LBLG。Name = "LBLG "
-LBLG。parent = game:GetService(" CoreGui ")--使用获取服务更安全
-LBLG。ZIndexBehavior = Enum。ZIndexBehavior .同胞
-LBLG。启用=真
+LBLG .Name = "LBLG "
+LBLG .parent = game:GetService(" CoreGui ")--使用获取服务更安全
+LBLG .ZIndexBehavior = Enum .ZIndexBehavior。同胞
+LBLG .启用=真
 
-LBL。Name = "LBL "
-LBL。Parent = LBLG
-LBL。BackgroundColor3 = Color3.new(1，1，1)
-LBL。BackgroundTransparency = 1
-LBL。BorderColor3 = Color3.new(0，0，0)
-LBL。Position = UDim2.new(0.75，0，0.010，0)
-LBL。Size = UDim2.new(0，200，0，30)
-LBL。Font = Enum。字体. GothamSemibold
-LBL。Text = "加载中..."
-LBL。TextColor3 = Color3.new(1，1，1)
-LBL。TextScaled = false
-LBL。TextSize = 16
-LBL。TextWrapped = true
-LBL。可见=真
+LBL .Name = "LBL "
+LBL .Parent = LBLG
+LBL .BackgroundColor3 = Color3.new(1，1，1)
+LBL .BackgroundTransparency = 1
+LBL .BorderColor3 = Color3.new(0，0，0)
+LBL .Position = UDim2.new(0.75，0，0.010，0)
+LBL .Size = UDim2.new(0，200，0，30)
+LBL .Font = Enum .字体。哥谭半粗体
+LBL .Text = "加载中..."
+LBL .TextColor3 = Color3.new(1，1，1)
+LBL .TextScaled = false
+LBL .TextSize = 16
+LBL .TextWrapped = true
+LBL .可见=真
 
 本地FpsLabel = LBL
-本地心跳= game:get service(“run service”)。心跳
+本地心跳= game:获取服务(“运行服务”).心跳
 本地最后一次迭代，开始
-local FrameUpdateTable = {}
+本地FrameUpdateTable = {}
 
-local function HeartbeatUpdate()
-    LastIteration = tick()
-    for Index = #FrameUpdateTable, 1, -1 do
-        FrameUpdateTable[Index + 1] = (FrameUpdateTable[Index] >= LastIteration - 1) and FrameUpdateTable[Index] or nil
-    end
-    FrameUpdateTable[1] = LastIteration
-    local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
-    CurrentFPS = math.floor(CurrentFPS)
+本地函数HeartbeatUpdate()
+LastIteration = tick()
+对于Index = #FrameUpdateTable，1，-1 do
+frame update table[Index+1]=(FrameUpdateTable[Index]> = last iteration-1)和frame update table[Index]或nil
+结束
+frame updatetable[1]= last iteration
+local current fps =(tick()-Start > = 1且#FrameUpdateTable)或(# frame updatetable/(tick()-Start))
+current fps = math . floor(current fps)
     
-    local hour = os.date("%H")
-    local minute = os.date("%M")
-    local second = os.date("%S")
+本地小时=操作系统日期(" %H ")
+本地分钟= os.date("%M ")
+local second = os.date("%S ")
     
-    FpsLabel.Text = ("你好啊: "..hour.."时"..minute.."分"..second.."秒 | FPS: "..CurrentFPS)
-end
+FpsLabel。Text =("你好啊: "..小时.."时"..分钟.."分"..第二.."秒FPS:"..电流脉冲)
+结束
 
 Start = tick()
-Heartbeat:Connect(HeartbeatUpdate)
+心跳:连接(心跳更新)
 
--- 先测试基础UI是否显示
-game:GetService("StarterGui"):SetCore("SendNotification",{ 
-    Title = "『910』", 
-    Text ="正在加载UI界面...", 
-    Duration = 3, 
+-先测试基础用户界面是否显示
+game:get service(" starter GUI "):set core(" send notification " ,{
+title = " " 910 "，
+Text = "正在加载用户界面界面...",
+持续时间= 3，
 })
 
--- 先不加载外部UI库，测试基础功能
-wait(1)
+-先不加载外部用户界面库,测试基础功能
+等待(1)
 
--- 创建简单的测试UI来确认问题
-local testFrame = Instance.new("Frame")
-testFrame.Name = "TestFrame"
-testFrame.Parent = LBLG
-testFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-testFrame.BorderSizePixel = 0
-testFrame.Position = UDim2.new(0.7, 0, 0.05, 0)
-testFrame.Size = UDim2.new(0, 250, 0, 200)
-testFrame.Visible = true
+-创建简单的测试用户界面来确认问题
+local test Frame = instance . new(" Frame ")
+测试框架。Name = "TestFrame "
+测试框架。Parent = LBLG
+测试框架。background color 3 = color 3 . from RGB(40，40，50)
+测试框架。BorderSizePixel = 0
+测试框架。Position = UDim2.new(0.7，0，0.05，0)
+测试框架。Size = UDim2.new(0，250，0，200)
+测试框架。可见=真
 
-local testLabel = Instance.new("TextLabel")
-testLabel.Name = "TestLabel"
-testLabel.Parent = testFrame
-testLabel.BackgroundTransparency = 1
-testLabel.Size = UDim2.new(1, 0, 1, 0)
-testLabel.Text = "测试UI - 如果能看见这个，说明基础UI正常"
-testLabel.TextColor3 = Color3.new(1, 1, 1)
+local test label = instance . new(" text label ")
+测试标签。Name = "TestLabel "
+测试标签。父代=测试框架
+测试标签。BackgroundTransparency = 1
+测试标签。Size = UDim2.new(1，0，1，0)
+测试标签。Text = "测试UI -如果能看见这个,说明基础用户界面正常"
+测试标签。TextColor3 = Color3.new(1，1，1)
 testLabel.TextSize = 14
 testLabel.TextWrapped = true
 
