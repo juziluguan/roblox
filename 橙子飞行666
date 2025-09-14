@@ -1,0 +1,389 @@
+local ChengZiFlyV3 = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TopBar = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Close = Instance.new("ImageButton")
+local Minimize = Instance.new("ImageButton")
+local Content = Instance.new("Frame")
+local Up = Instance.new("TextButton")
+local Down = Instance.new("TextButton")
+local Plus = Instance.new("TextButton")
+local Mine = Instance.new("TextButton")
+local Speed = Instance.new("TextLabel")
+local Fly = Instance.new("TextButton")
+
+--Properties:
+
+ChengZiFlyV3.Name = "ChengZiFlyV3"
+ChengZiFlyV3.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ChengZiFlyV3.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = ChengZiFlyV3
+Main.AnchorPoint = Vector2.new(0, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.BackgroundTransparency = 1.000
+Main.Position = UDim2.new(0.100000001, 0, 0.449999988, 0)
+Main.Size = UDim2.new(0, 190, 0, 130)
+
+TopBar.Name = "TopBar"
+TopBar.Parent = Main
+TopBar.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+TopBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TopBar.BorderSizePixel = 1
+TopBar.Size = UDim2.new(1, 0, 0, 30)
+
+Title.Name = "Title"
+Title.Parent = TopBar
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 115, 0, 30)
+Title.Font = Enum.Font.Ubuntu
+Title.Text = "橙子中心-飞行V3"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 17.000
+
+Close.Name = "Close"
+Close.Parent = TopBar
+Close.AnchorPoint = Vector2.new(1, 0)
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.968421042, 0, 0.233333334, 0)
+Close.Size = UDim2.new(0, 15, 0, 15)
+Close.Image = "rbxassetid://7072725342"
+
+Minimize.Name = "Minimize"
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Seated，false)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType . StrafingNoPhysics，false)
+扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Swimming，false)
+扬声器。人物。人形:ChangeState(枚举。HumanoidStateType.Swimming)
+结束
+Minimize.BorderSizePixel = 0
+本地plr =游戏。玩家。本地玩家
+本地UpperTorso = plr。性格。低个子
+本地飞行=真
+
+局部ctrl = {f = 0，b = 0，l = 0，r = 0}
+局部lastctrl = {f = 0，b = 0，l = 0，r = 0}
+本地最大速度= 50
+本地速度= 0
+local bg = Instance.new("BodyGyro "，UpperTorso)
+Content.BorderSizePixel = 0
+bg。P = 9e4
+bg.maxTorque = Vector3.new(9e9，9e9，9e9)
+
+local bv = instance . new(" body velocity "，UpperTorso)
+Up.Parent = Content
+Up.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Up.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Up.BorderSizePixel = 1
+Up.Size = UDim2.new(0, 50, 0, 50)
+Up.Font = Enum.Font.Ubuntu
+Up.Text = "上升"
+Up.TextColor3 = Color3.fromRGB(255, 255, 255)
+Up.TextSize = 18.000
+
+Down.Name = "Down"
+Down.Parent = Content
+Down.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Down.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Down.BorderSizePixel = 1
+Down.Position = UDim2.new(0, 0, 0.5, 0)
+Down.Size = UDim2.new(0, 50, 0, 50)
+Down.Font = Enum.Font.Ubuntu
+Down.Text = "下降"
+Down.TextColor3 = Color3.fromRGB(255, 255, 255)
+Down.TextSize = 18.000
+
+Plus.Name = "Plus"
+Plus.Parent = Content
+Plus.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Plus.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Plus.BorderSizePixel = 1
+Plus.Position = UDim2.new(0.263157904, 0, 0, 0)
+Plus.Size = UDim2.new(0, 50, 0, 50)
+Plus.Font = Enum.Font.Ubuntu
+Plus.Text = "+"
+Plus.TextColor3 = Color3.fromRGB(255, 255, 255)
+Plus.TextSize = 20.000
+
+Mine.Name = "Mine"
+Mine.Parent = Content
+Mine.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Mine.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Mine.BorderSizePixel = 1
+Mine.Position = UDim2.new(0.263157904, 0, 0.5, 0)
+Mine.Size = UDim2.new(0, 50, 0, 50)
+Mine.Font = Enum.Font.Ubuntu
+Mine.Text = "-"
+Mine.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mine.TextSize = 28.000
+
+Speed.Name = "Speed"
+Speed.Parent = Content
+Speed.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+Speed.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Speed.BorderSizePixel = 1
+Speed.Position = UDim2.new(0.526315808, 0, 0, 0)
+Speed.Size = UDim2.new(0, 90, 0, 50)
+Speed.Font = Enum.Font.Cartoon
+Speed.Text = "1"
+Speed.TextColor3 = Color3.fromRGB(255, 255, 255)
+Speed.TextSize = 24.000
+
+Fly.Name = "Fly"
+Fly.Parent = Content
+Fly.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+Fly.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Fly.BorderSizePixel = 1
+Fly.Position = UDim2.new(0.526315808, 0, 0.5, 0)
+Fly.Size = UDim2.new(0, 90, 0, 50)
+Fly.Font = Enum.Font.Ubuntu
+Fly.Text = "飞行"
+Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fly.TextSize = 20.000
+
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Main.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = Main.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+Main.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+local Mini = false
+
+Minimize.MouseButton1Click:Connect(function()
+	Mini = not Mini
+	if not Mini then
+		Minimize.Image = "rbxassetid://7072720870"
+	else
+		Minimize.Image = "rbxassetid://7072719338"
+	end
+	Content.Visible = Mini
+end)
+
+Close.MouseButton1Click:Connect(function()
+	ChengZiFlyV3:Destroy()
+end)
+
+nowe = false
+speeds = 1
+local speaker = game:GetService("Players").LocalPlayer
+
+Fly.MouseButton1Down:connect(function()
+	if nowe == true then
+		nowe = false
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Pspeaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
+		speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+	else 
+		nowe = true
+		for i = 1, speeds do
+			spawn(function()
+				local hb = game:GetService("RunService").Heartbeat	
+				tpwalking = true
+				local chr = game.Players.LocalPlayer.Character
+				local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+				while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+					if hum.MoveDirection.Magnitude > 0 then
+						chr:TranslateBy(hum.MoveDirection)
+					end
+				end
+			end)
+		end
+
+		game.Players.LocalPlayer.Character.Animate.Disabled = true
+		local Char = game.Players.LocalPlayer.Character
+		local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+		for i,v in next, Hum:GetPlayingAnimationTracks() do
+			v:AdjustSpeed(0)
+		end
+
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
+		speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+	end
+
+	local plr = game.Players.LocalPlayer
+	local UpperTorso = plr.Character.LowerTorso
+本地飞行=真
+	local deb = true
+	local ctrl = {f = 0, b = 0, l = 0, r = 0}
+	local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+	local maxspeed = 50
+	local speed = 0
+	local bg = Instance.new("BodyGyro", UpperTorso)
+
+	bg.P = 9e4
+	bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+	bg.cframe = UpperTorso.CFrame
+	local bv = Instance.new("BodyVelocity", UpperTorso)
+bv.velocity = Vector3.new(0，0.1，0)
+bv.maxForce = Vector3.new(9e9，9e9，9e9)
+
+如果nowe == true，那么
+plr。character . humanoid . platform stand = true
+结束
+
+while nowe = = true or game:get service(" Players ")local player . character . humanoid . health = = 0 do。
+等待()
+如果ctrl.l + ctrl.r ~= 0或ctrl.f + ctrl.b ~= 0，则
+速度=速度+.5+(速度/最大速度)
+
+如果速度>最大速度，则
+速度=最大速度
+结束
+elseif not (ctrl.l + ctrl.r ~= 0或ctrl . f+ctrl . b ~ = 0)and speed ~ = 0 then
+速度=速度-1
+
+如果速度< 0，则
+速度= 0
+结束
+结束
+
+如果(ctrl.l + ctrl.r) ~= 0或(ctrl.f + ctrl.b) ~= 0，则
+bv.velocity =((游戏。workspace . current camera . coordinate frame . look vector *(ctrl . f+ctrl . b))+((游戏。workspace . current camera . coordinate frame * c frame . new(ctrl . l+ctrl . r，(ctrl.f+ctrl.b)*.2，0)。p) -游戏。workspace . current camera . coordinate frame . p))*速度
+			lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+		elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed != 0 then
+			bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+		else
+			bv.velocity = Vector3.new(0,0,0)
+		end
+		bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+	end
+
+	ctrl = {f = 0, b = 0, l = 0, r = 0}
+	lastctrl = {f = 0, b = 0, l = 0, r = 0}
+速度=速度-1
+bg:销毁()
+如果速度< 0，则
+速度= 0
+结束
+tpwalking = false
+结束)
+
+bv.velocity =((游戏。workspace . current camera . coordinate frame . look vector *(ctrl . f+ctrl . b))+((游戏。workspace . current camera . coordinate frame * c frame . new(ctrl . l+ctrl . r，(ctrl.f+ctrl.b)*.2，0)。p) -游戏。workspace . current camera . coordinate frame . p))*速度
+lastctrl = {f = ctrl.f，b = ctrl.b，l = ctrl.l，r = ctrl.r}
+elseif (ctrl.l + ctrl.r) == 0且(ctrl.f + ctrl.b) == 0且速度！那么= 0
+
+其他
+bv.velocity = Vector3.new(0，0，0)
+结束
+
+结束
+等待(0.7)
+ctrl = {f = 0，b = 0，l = 0，r = 0}
+lastctrl = {f = 0，b = 0，l = 0，r = 0}
+速度= 0
+
+bv:销毁()
+plr .性格。人形的。平台支架=假
+游戏1000名球员。本地玩家。性格。动画。禁用=假
+tpwalking = false
+tpwalking = false
+
+向上MouseButton1Down:连接(函数()
+spawn(函数()
+				local hb = game:GetService("RunService").Heartbeat	
+tpwalking = true
+下去MouseButton1Down:连接(函数()
+游戏1000名球员。本地玩家。性格。humanoidrootpart。c帧=游戏.玩家。本地玩家。性格。humanoidrootpart。c帧* c帧。新(0，-2，0)
+而tpwalking和hb:Wait()和chr和hum和hum。家长do
+如果哼。MoveDirection.Magnitude > 0
+游戏:获取服务(“玩家”)本地玩家。新增字符:Connect(function(char).
+结束
+游戏1000名球员。本地玩家。性格。人形的。平台支架=假
+游戏1000名球员。本地玩家。性格。动画。禁用=假
+结束
+结束
+另外MouseButton1Down:连接(函数()
+
+速度. Text =速度
+如果nowe == true，那么
+tpwalking = false
+速度。Text = '速度不能小于1'
+对于i = 1，速度决定
+产卵(函数()
+local HB = game:get service(“run service”)。心跳
+tpwalking = true
+本地chr =游戏。玩家。本地玩家。角色
+速度。Text =速度
+而行走和hb:等等()和儿童健康研究（Child Health Research的缩写）和嗯和哼.家长做
+如果哼MoveDirection。幅度> 0
+
+对于i = 1，速度决定
+spawn(函数()
+					local hb = game:GetService("RunService").Heartbeat	
+tpwalking = true
+本地chr =游戏。玩家.本地玩家.角色
+local hum = chr和chr:findfirtschildwhitisa("人形")
+而tpwalking和hb:Wait()和chr和hum和hum。家长do
+如果哼。MoveDirection.Magnitude > 0
+chr:TranslateBy(哼。移动方向)
+结束
+结束
+结束)
+结束
+结束
+结束
+结束)
