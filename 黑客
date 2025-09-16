@@ -1,0 +1,193 @@
+local Translations = {
+   --["这里填要替换的英文"] = "这里填中文",
+    ["c00lgui revival by Hyperion"] = "c00lgui 复兴版 by Hyperion",
+["Weapon Scripts"] = "武器脚本",
+["Semic The Hedgehog"] = "刺猬索尼克 (Semic)",
+["F3X BTools"] = "F3X 建造工具",
+["Classic BTools"] = "经典建造工具",
+["Punch"] = "拳击",
+["Linked Sword"] = "链接剑",
+["Filebrand"] = "火印 (Filebrand)", -- 根据常见脚本名称，Filebrand很可能指代Firebrand（火印）
+["Settings"] = "设置",
+["Skybox/Decal ID"] = "天空盒/贴花 ID",
+["Music ID"] = "音乐 ID",
+["Modlin"] = "Modlin", -- 疑似名称，保留
+["Zombie"] = "僵尸", -- 或指“僵尸脚本”分类
+["JoJo Gloves"] = "JoJo手套",
+["Xester"] = "Xester", -- 疑似名称，保留
+["Seraphic Blade"] = "天使之刃",
+["John Doe"] = "无名氏",
+["Jerk Off"] = "猥亵动作", -- 根据上下文，此为不雅脚本名称的直译
+["Web"] = "网页", -- 指代一系列网页链接或脚本
+["Web1"] = "网页1",
+-- ... (此处省略Web2到Web500的重复翻译，它们都应遵循 "网页" + 数字 的格式)
+["Victim"] = "目标",
+["Roblox"] = "Roblox",
+["Music Pitch"] = "音高",
+["FSD"] = "FSD", -- 缩写，可能指代特定功能或脚本，保留
+["LocalPlayer"] = "本地玩家",
+["Misc."] = "杂项",
+["Billboard Gui"] = "广告牌GUI",
+["Change Name"] = "更改名称",
+["Get All Tools"] = "获取所有工具",
+["Dec Explorer"] = "Decal浏览器", -- Dec 是 Decal 的常见缩写
+["Set Gravity"] = "设置重力",
+["Chicken Arms"] = "鸡翅手臂",
+["iOrb"] = "i球",
+["Destroy Gui"] = "销毁GUI",
+["Create Platform"] = "创建平台",
+["Set JumpPower"] = "设置跳跃力",
+["Bring Player (Client)"] = "传送玩家(客户端)",
+["Bring All (Client)"] = "传送所有(客户端)",
+["Flexing Dod"] = "Flexing Dod", -- 疑似名称或特定术语，保留
+["Blackboard"] = "黑板",
+["Medin"] = "Medin", -- 疑似名称，保留
+["Preset Skybox/Decal IDs"] = "预设天空盒/贴花ID",
+["Preset Music IDs"] = "预设音乐ID",
+["team-c00lkidd"] = "团队-c00lkidd",
+["Elctro Sp00k"] = "电子幽灵 (Electro Spook)", -- 修正拼写并翻译
+["Raining Tacos"] = "降落塔可",
+["Logo 1"] = "标志 1",
+["Logo 2"] = "标志 2",
+["Thomas"] = "托马斯",
+["c00lkidd"] = "c00lkidd",
+["Chop Suey"] = "炒杂碎",
+["Scream"] = "尖叫",
+["team skrubl0r"] = "团队 skrubl0r",
+["team 1x3x5x6"] = "团队 1x3x5x6",
+["team-tianx4tcd"] = "团队-tianx4tcd", -- 疑似名称，保留
+["EuDra"] = "EuDra", -- 疑似名称，保留
+["Modin"] = "Modin", -- 疑似名称，保留
+["Team standlet"] = "团队展台", -- 或为特定术语
+["FxDra"] = "FxDra", -- 疑似名称，保留
+["Sonic The Hedgehog"] = "刺猬索尼克",
+["Gravity Gun"] = "重力枪",
+["Animation ID"] = "动画ID",
+["Chat Spam Text"] = "聊天垃圾文本",
+["SCP-096"] = "SCP-096",
+["Killbat"] = "杀戮蝙蝠",
+["Firebrand"] = "火印", -- Filebrand的另一种可能拼写
+["Click Teleport"] = "点击传送",
+["Animation Speed"] = "动画速度",
+["Gravity Amount"] = "重力大小",
+["God"] = "上帝模式",
+["0"] = "0", -- 数字通常不翻译，但根据上下文可能是值或选项
+["255"] = "255",
+["161099825"] = "161099825", -- 数字ID不翻译
+["join team c00lkidd!"] = "加入团队 c00lkidd!",
+}
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
+end
+
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
+
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+--这下面填加载外部脚本
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hyperionhax/c00lgui/refs/heads/main/CoolGui.lua"))()
+
+end)
+
+if not success then
+    warn("加载失败:", err)
+end
