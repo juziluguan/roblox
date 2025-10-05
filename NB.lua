@@ -1,1 +1,0 @@
- local player = game.Players.LocalPlayerlocal keybind = 'y' -- keybind here  local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest player:GetMouse().KeyDown:connect(function(key)    if key == keybind then        event:FireServer(words[math.random(#words)], "All")     endend)
